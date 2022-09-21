@@ -23,9 +23,9 @@ function Header() {
 
           <div className="search">
             <OutlinedInput
-              label="Search"
+              placeholder="Search"
+              className="search-box"
               id="filled-hidden-label-small"
-              defaultValue="Search"
               variant="filled"
               size="small"
               fullWidth

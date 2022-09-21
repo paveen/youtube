@@ -9,6 +9,8 @@ import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 import UserIcon from "../images/user-img.png";
 import { TextField } from "@mui/material";
 
+import homeData from "../json/homeData.json";
+
 function HomeLeftSection() {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -19,88 +21,88 @@ function HomeLeftSection() {
     <div className="home-left-section">
       <Router>
         <div className="main-poster">
+          {homeData.map(
+            (home) => (
+              <>
+                <iframe
+                  width="100%"
+                  height="480"
+                  src={home.song}
+                  title={home.videoTitle}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
 
-        {/* {data.map(
-                (user) => (
-                  
-                ),
-                []
-              )} */}
+                <div className="active-video-title">
+                  <h4>{home.songTitle}</h4>
+                </div>
 
+                <div className="description">
+                  <div className="channel-section">
+                    <img src={channelImg} alt="img" className="channel-logo" />
+                    <div className="channel-text">
+                      <Link to="/">{home.songDetails}</Link>
+                      <img
+                        src={checkIconFilled}
+                        alt="img"
+                        className="check-icon"
+                      />
+                      <div className="subscriber-counter">
+                        {home.subscriber}
+                      </div>
+                    </div>
+                    <div className="btn-subscribe">
+                      {home.btn_text_subscribe}
+                    </div>
+                  </div>
+                  <div className="share-icons">
+                    <ul>
+                      <li>
+                        <img src={likeIcon} alt="like icon" />
+                        {home.like}
+                      </li>
+                      <li>
+                        <img src={dislikeIcon} alt="like icon" />
+                        {home.dislike}
+                      </li>
+                      <li>
+                        <img src={sharedIcon} alt="like icon" />
+                        {home.share}
+                      </li>
+                      <li className="dots">...</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="description">
+                  <p>
+                    {home.para_desc[0].para_text}
+                    <ul>
+                      <li>{home.para_desc[0].para_list[0].para_list_song}</li>
+                      <li>{home.para_desc[0].para_list[0].para_list_singer}</li>
+                      <li>{home.para_desc[0].para_list[0].para_list_feat}</li>
+                      <li>{home.para_desc[0].para_list[0].para_list_music}</li>
+                      <li>{home.para_desc[0].para_list[0].para_list_lyricist}</li>
+                      <li>{home.para_desc[0].para_list[0].para_list_movie}</li>
+                    </ul>
+                  </p>
+                </div>
 
-          <iframe
-            width="100%"
-            height="480"
-            src="https://www.youtube.com/embed/07dfqQ0cvl8"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen ></iframe>
-
-          <div className="active-video-title">
-            <h4>
-              Hai Apna Dil To Awara | Dev Anand | Waheeda Rehman | Hemant Kumar
-              | Solva Saal | Ishtar Music
-            </h4>
-          </div>
-          <div className="description">
-            <div className="channel-section">
-              <img src={channelImg} alt="img" className="channel-logo" />
-              <div className="channel-text">
-                <Link to="/">Ishtar Music</Link>
-                <img src={checkIconFilled} alt="img" className="check-icon" />
-                <div className="subscriber-counter">37.7M subscribers</div>
-              </div>
-              <div className="btn-subscribe">Subscribe</div>
-            </div>
-            <div className="share-icons">
-              <ul>
-                <li>
-                  <img src={likeIcon} alt="like icon" />
-                  116k
-                </li>
-                <li>
-                  <img src={dislikeIcon} alt="like icon" />
-                  Dislike
-                </li>
-                <li>
-                  <img src={sharedIcon} alt="like icon" />
-                  Share
-                </li>
-                <li className="dots">...</li>
-              </ul>
-            </div>
-          </div>
-          <div className="description">
-            <p>
-              10,897,724 views Jul 30, 2019 Hai Apna Dil To Awara | Dev Anand |
-              Waheeda Rehman | Hemant Kumar | Solva Saal
-              <ul>
-                <li>Song : Hai Apna Dil To Awara</li>
-                <li>Singer : Hemant Kumar</li>
-                <li>Feat : Dev Anand & Waheeda Rehman</li>
-                <li>Music : S.D. Burman</li>
-                <li>Lyricist : Majrooh Sultanpuri</li>
-                <li>Movie : Solva Saal</li>
-              </ul>
-              <p>
-                this url is for "accordion":
-                https://codesandbox.io/s/jzx44ynyqw?file=/src/index.js
-              </p>
-            </p>
-          </div>
-
-          <div className="comment-section">
-            <p>3,712 Comments</p>
-            <div className="user-name">
-              <img src={UserIcon} alt="icon" className="user-icon"/>
-              <TextField
-                label="Add a comments..."
-                variant="standard"
-                className="full-width"
-              />
-            </div>
-          </div>
+                <div className="comment-section">
+                  <p>{home.comments}</p>
+                  <div className="user-name">
+                    <img src={UserIcon} alt="icon" className="user-icon" />
+                    <TextField
+                      label="Add a comments..."
+                      variant="standard"
+                      className="full-width"
+                    />
+                  </div>
+                </div>
+              </>
+            ),
+            []
+          )}
         </div>
       </Router>
     </div>

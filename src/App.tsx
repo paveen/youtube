@@ -2,7 +2,6 @@ import './App.scss';
 import 'bootstrap-scss'
 import Home from './Pages/Home';
 
-
 function App() {
 
   return (
